@@ -69,3 +69,11 @@ cons of SFU server:
 
 ## Docs of project:
 Just open /docs :D
+
+## P.S.
+Project was closed, because have tech problems with optimizations of frames. 
+### description of problem
+I think, that problem in source of aiortc, because track that we got can't be copied for more than 1 people without frame losses. 
+Track (that we got from frontend) have func "recv" which get frame from frmame queue, if apps have N (N > 2) user in room, 
+then every track will give away frame to N-1 users from only one frame queue. Thus, every user will get from every track jusst part of frames, because frames are stored in queue.
+I thought, that i can develop storage of frames, that will stored N-1 copy of every frame, then every user can get all frames from all needed tracks (N-1), but it sovled the problem in a non-optimized way.
